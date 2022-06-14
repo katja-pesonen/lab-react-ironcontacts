@@ -15,19 +15,36 @@ function App() {
     <div className="list">
       <h2>Iron Contacts</h2>
       
-      { contacts.map((celeb, index) => {
-        return (
-          <div key={celeb.id}>
-          <img src={ celeb.pictureUrl } alt="celeb photo" />
-          <p> { celeb.name } </p>
-          <p> { celeb.popularity } </p>
-          </div>
-        )
-      })}
+
+          <div><table>
+          <thead>
+              <tr>
+                  <th>Picture</th>
+                  <th>Name</th>
+                  <th>Popularity</th>
+              </tr>
+          </thead>
+    <tbody>
+    { contacts.map( contact => { 
+      return (
+          <tr>
+            <td><img src={ contact.pictureUrl } alt="celeb photo" /></td>
+            <td>{ contact.name }</td>
+            <td>{ contact.popularity }</td>
+          </tr>
+      )
+    })}
+
+
+    </tbody>
+</table>
+ </div>
+
       
     </div>
   );
 }
+
  
 
 
