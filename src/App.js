@@ -17,6 +17,9 @@ function App() {
     setContacts([random, ...contacts])
   }
 
+  const deleteCeleb = () => {
+    
+  }
 
   return (
     <div className="list">
@@ -36,6 +39,7 @@ function App() {
                   <th>Popularity</th>
                   <th>Won Oscar</th>
                   <th>Won Emmy</th>
+                  <th>Actions</th>
               </tr>
           </thead>
     <tbody>
@@ -47,6 +51,10 @@ function App() {
             <td>{ Math.round(contact.popularity) }</td>
             <td>{ contact.wonOscar ? <img width="200px" src="../trophy.PNG"/> : null }</td>
             <td>{ contact.wonEmmy }</td>
+            <td>
+            <button type='button'
+          onClick={deleteCeleb}>Delete</button>
+          </td>
           </tr>
       )
     })}
