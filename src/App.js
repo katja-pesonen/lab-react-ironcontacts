@@ -5,16 +5,28 @@ import allContacts from "./contacts.json"
 import { useState } from 'react';
 
 const firstFive = allContacts.slice(0,5)
-
+const restOfCelebs = allContacts.slice(5)
 
 function App() {
 
   const [contacts, setContacts] = useState(firstFive)
 
+  const randomCeleb = () => {
+    let myRandom = Math.floor(Math.random() * restOfCelebs.length)
+    let random = restOfCelebs[myRandom]
+    setContacts([random, ...contacts])
+  }
+
 
   return (
     <div className="list">
       <h2>Iron Contacts</h2>
+
+      <div>
+        <button
+          type='button'
+          onClick={randomCeleb}>Add Random Contact</button>
+      </div>
 
           <div><table>
           <thead>
