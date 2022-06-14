@@ -11,10 +11,10 @@ function App() {
 
   const [contacts, setContacts] = useState(firstFive)
 
+
   return (
     <div className="list">
       <h2>Iron Contacts</h2>
-      
 
           <div><table>
           <thead>
@@ -22,15 +22,19 @@ function App() {
                   <th>Picture</th>
                   <th>Name</th>
                   <th>Popularity</th>
+                  <th>Won Oscar</th>
+                  <th>Won Emmy</th>
               </tr>
           </thead>
     <tbody>
     { contacts.map( contact => { 
       return (
           <tr>
-            <td><img src={ contact.pictureUrl } alt="celeb photo" /></td>
+            <td><img width="200px" src={ contact.pictureUrl } alt="celeb photo"/></td>
             <td>{ contact.name }</td>
-            <td>{ contact.popularity }</td>
+            <td>{ Math.round(contact.popularity) }</td>
+            <td>{ contact.wonOscar ? <img width="200px" src="../trophy.PNG"/> : null }</td>
+            <td>{ contact.wonEmmy }</td>
           </tr>
       )
     })}
