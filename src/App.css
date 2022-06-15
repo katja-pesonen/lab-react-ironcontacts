@@ -40,3 +40,32 @@
 .imagesize {
   width: 50px;
 }
+
+.wrapper {
+  text-align: center;
+  border-bottom: 3px solid black;
+}
+table{
+  margin: auto;
+  padding: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+tr{
+  border: 1px solid black;
+}
+td{
+  border: 1px solid black;
+  padding: 10px 30px;
+  color: black;
+}
+
+.header {
+  text-align: center;
+  align-content: center;
+}
+
+.btns {
+  margin: 5px;
+  padding: 6px;
+}

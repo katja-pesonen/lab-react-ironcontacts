@@ -17,21 +17,43 @@ function App() {
     setContacts([random, ...contacts])
   }
 
-  const deleteCeleb = () => {
+  const deleteCeleb = (id) => {
+    const filteredArray = contacts.filter((eachCeleb) => {
+      return eachCeleb.id !== id;
+    });
+    setContacts([...filteredArray]);
+  };
     
-  }
+  const sortPopularity = () => {
+    let sortedArray = contacts.sort((a, b) => {
+      return b.popularity - a.popularity;
+    });
+    setContacts([...sortedArray]);
+  };
+
+  const sortName = () => {
+    let sortedArray2 = contacts.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    setContacts([...sortedArray2]);
+  };
 
   return (
     <div className="list">
-      <h2>Iron Contacts</h2>
+      <h2 className='header'>Iron Contacts</h2>
 
-      <div>
-        <button
-          type='button'
-          onClick={randomCeleb}>Add Random Contact</button>
+      <div className='header'>
+        <button  className='btns' type='button' onClick={randomCeleb}>Add Random Contact</button>
+        <button className='btns' onClick={sortPopularity}>Sort by Popularity</button>
+        <button className='btns' onClick={sortName}>Sort by Name</button>
       </div>
 
-          <div><table>
+          <div className='wrapper'>
+          <table>
           <thead>
               <tr>
                   <th>Picture</th>
@@ -46,14 +68,14 @@ function App() {
     { contacts.map( contact => { 
       return (
           <tr>
-            <td><img width="200px" src={ contact.pictureUrl } alt="celeb photo"/></td>
+            <td><img width="200px" src={ contact.pictureUrl } alt="celeb"/></td>
             <td>{ contact.name }</td>
-            <td>{ Math.round(contact.popularity) }</td>
-            <td>{ contact.wonOscar ? <img width="200px" src="../trophy.PNG"/> : null }</td>
-            <td>{ contact.wonEmmy }</td>
+            <td>{ (contact.popularity).toFixed(2) }</td>
+            <td>{ contact.wonOscar ? "🏆" : null }</td>
+            <td>{ contact.wonEmmy ? "🏆" : "" }</td>
             <td>
-            <button type='button'
-          onClick={deleteCeleb}>Delete</button>
+            <button type='button' key={contact.id}
+          onClick={() => deleteCeleb(contact.id)}>Delete 🗑️</button>
           </td>
           </tr>
       )
